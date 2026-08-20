@@ -244,7 +244,55 @@
 
 <main class="container">
 
+<button
+  class="btn-cadastro"
+  onclick="abrirCadastro()"
+>
+  ➕ Cadastrar medicamento
+</button>
 
+<div id="cadastro" style="display: none;">
+
+  <h2>💊 Cadastrar medicamento</h2>
+
+  <input id="cadNome" placeholder="Nome do medicamento">
+
+  <input id="cadPrincipio" placeholder="Princípio ativo">
+
+  <input id="cadClasse" placeholder="Classe farmacológica">
+
+  <input id="cadEspecies" placeholder="Espécies">
+
+  <textarea id="cadIndicacoes" placeholder="Indicações"></textarea>
+
+  <textarea id="cadMecanismo" placeholder="Mecanismo de ação"></textarea>
+
+  <textarea id="cadDose" placeholder="Dose"></textarea>
+
+  <input id="cadVia" placeholder="Via de administração">
+
+  <input id="cadConcentracao" placeholder="Concentração">
+
+  <textarea id="cadContraindicacoes" placeholder="Contraindicações"></textarea>
+
+  <textarea id="cadEfeitos" placeholder="Efeitos adversos"></textarea>
+
+  <textarea id="cadInteracoes" placeholder="Interações medicamentosas"></textarea>
+
+  <textarea id="cadToxicidade" placeholder="Toxicidade / intoxicação"></textarea>
+
+  <textarea id="cadAntidoto" placeholder="Antídoto / conduta"></textarea>
+
+  <textarea id="cadReferencias" placeholder="Referências"></textarea>
+
+  <button
+    class="btn-salvar"
+    onclick="salvarMedicamento()"
+  >
+    💾 Cadastrar medicamento
+  </button>
+
+</div>
   <div class="search">
 
     <input
