@@ -245,6 +245,64 @@
 .btn-cadastro:hover {
   opacity: 0.9;
   }
+    #cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+#cadastro input,
+#cadastro textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #d8b4fe;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+}
+
+#cadastro textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+#cadastro h2 {
+  margin-bottom: 5px;
+}
+
+.btn-salvar {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #8b5cf6;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#resultados,
+#ficha {
+  width: 100%;
+  clear: both;
+}
+
+#ficha {
+  margin-top: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+#cadastro {
+  position: relative;
+  z-index: 5;
+}
   </style>
 </head>
 
