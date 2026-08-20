@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VETMED | Guia de Medicamentos Veterinários</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f3fa;
+      color: #292330;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6c3fa5, #8d61c4);
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 25px 20px;
+    }
+
+    .search {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      margin-top: -35px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .search input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e2d8ec;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: #7b4bb3;
+    }
+
+    .section-title {
+      margin: 35px 0 18px;
+      font-size: 24px;
+      color: #55327e;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+    }
+
+    .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: #55327e;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #6c6573;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .warning {
+      background: #fff4e5;
+      border-left: 5px solid #f0a020;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 30px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 45px;
+      background: #292330;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 29px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🐾 VETMED</h1>
+    <p>Guia de medicamentos para estudantes e profissionais de Medicina Veterinária</p>
+  </header>
+
+  <main class="container">
+
+    <div class="search">
+      <input
+        type="text"
+        placeholder="🔎 Pesquisar medicamento ou princípio ativo..."
+      >
+    </div>
+
+    <h2 class="section-title">O que você procura?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">💊</div>
+        <h3>Medicamentos</h3>
+        <p>Consulte informações importantes sobre medicamentos utilizados na rotina veterinária.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h3>Princípio ativo</h3>
+        <p>Entenda qual é o princípio ativo e qual a sua função no organismo.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <h3>Doses e concentrações</h3>
+        <p>Informações organizadas para facilitar a consulta durante os estudos e estágios.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚠️</div>
+        <h3>Efeitos adversos</h3>
+        <p>Veja possíveis reações adversas e principais cuidados relacionados aos medicamentos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚨</div>
+        <h3>Intoxicações</h3>
+        <p>Consulte informações sobre toxicidade, sinais clínicos e medidas de emergência.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🩺</div>
+        <h3>Antídotos</h3>
+        <p>Encontre rapidamente informações sobre antagonistas e antídotos quando disponíveis.</p>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">🐶 Por espécie</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🐶</div>
+        <h3>Cães</h3>
+        <p>Medicamentos e informações relevantes para a rotina de pequenos animais.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🐱</div>
+        <h3>Gatos</h3>
+        <p>Consulte informações específicas e cuidados importantes para felinos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🐴</div>
+        <h3>Equinos</h3>
+        <p>Informações direcionadas à rotina clínica de equinos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🐮</div>
+        <h3>Grandes animais</h3>
+        <p>Conteúdos voltados para bovinos e outros grandes animais.</p>
+      </div>
+
+    </div>
+
+    <div class="warning">
+      <strong>⚠️ Atenção:</strong><br>
+      O VETMED será uma ferramenta de apoio aos estudos e à consulta profissional.
+      As informações não substituem avaliação clínica, prescrição veterinária,
+      bula oficial ou protocolos atualizados.
+    </div>
+
+  </main>
+
+  <footer>
+    VETMED 🐾<br>
+    Guia de apoio em Farmacologia Veterinária
+  </footer>
+
+</body>
+</html>
