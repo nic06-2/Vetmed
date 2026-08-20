@@ -513,6 +513,100 @@
 </footer>
 <script src="./medicamentos.js"></script>
   <script>
+    function abrirCadastro() {
+
+  const cadastro = document.getElementById("cadastro");
+
+  cadastro.style.display = "block";
+
+  cadastro.scrollIntoView({
+    behavior: "smooth"
+  });
+
+    }
+    function salvarMedicamento() {
+
+  const novoMedicamento = {
+
+    nome: document.getElementById("cadNome").value,
+
+    principio: document.getElementById("cadPrincipio").value,
+
+    classe: document.getElementById("cadClasse").value,
+
+    especies: document
+      .getElementById("cadEspecies")
+      .value
+      .split(",")
+      .map(item => item.trim()),
+
+    indicacoes:
+      document.getElementById("cadIndicacoes").value,
+
+    mecanismo:
+      document.getElementById("cadMecanismo").value,
+
+    dose:
+      document.getElementById("cadDose").value,
+
+    via:
+      document.getElementById("cadVia").value,
+
+    concentracao:
+      document.getElementById("cadConcentracao").value,
+
+    contraindicacoes:
+      document.getElementById("cadContraindicacoes").value,
+
+    efeitos:
+      document.getElementById("cadEfeitos").value,
+
+    interacoes:
+      document.getElementById("cadInteracoes").value,
+
+    toxicidade:
+      document.getElementById("cadToxicidade").value,
+
+    antidoto:
+      document.getElementById("cadAntidoto").value,
+
+    referencias:
+      document
+        .getElementById("cadReferencias")
+        .value
+        .split("\n")
+        .filter(item => item.trim() !== "")
+
+  };
+
+
+  if (!novoMedicamento.nome) {
+
+    alert("⚠️ Digite o nome do medicamento.");
+
+    return;
+
+  }
+
+
+  medicamentos.push(novoMedicamento);
+
+
+  localStorage.setItem(
+    "vetmedMedicamentos",
+    JSON.stringify(medicamentos)
+  );
+
+
+  alert("💜 Medicamento cadastrado com sucesso!");
+
+
+  document.getElementById("cadastro").style.display = "none";
+
+
+  document.getElementById("cadNome").value = "";
+
+                   }
   function buscarMedicamento() {
 
   const texto = document
