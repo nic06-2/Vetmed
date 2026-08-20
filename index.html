@@ -444,462 +444,289 @@
   Guia de apoio em Farmacologia Veterinária
 
 </footer>
-
-
-
-<script>
-
-
-  const medicamentos = [
-
-
-    {
-
-      nome: "Dipirona",
-
-      principio: "Informação a cadastrar",
-
-      classe: "Analgésico e antitérmico",
-
-      mecanismo: "Informação a cadastrar",
-
-      especies: "Informação a cadastrar",
-
-      indicacoes: "Informação a cadastrar",
-
-      dose: "Informação a cadastrar",
-
-      apresentacoes: "Informação a cadastrar",
-
-      contraindicacoes: "Informação a cadastrar",
-
-      efeitos: "Informação a cadastrar",
-
-      interacoes: "Informação a cadastrar",
-
-      toxicidade: "Informação a cadastrar",
-
-      antidoto: "Informação a cadastrar",
-
-      referencias: "Informação a cadastrar"
-
-    },
-
-
-    {
-
-      nome: "Prednisona",
-
-      principio: "Informação a cadastrar",
-
-      classe: "Corticoide",
-
-      mecanismo: "Informação a cadastrar",
-
-      especies: "Informação a cadastrar",
-
-      indicacoes: "Informação a cadastrar",
-
-      dose: "Informação a cadastrar",
-
-      apresentacoes: "Informação a cadastrar",
-
-      contraindicacoes: "Informação a cadastrar",
-
-      efeitos: "Informação a cadastrar",
-
-      interacoes: "Informação a cadastrar",
-
-      toxicidade: "Informação a cadastrar",
-
-      antidoto: "Informação a cadastrar",
-
-      referencias: "Informação a cadastrar"
-
-    },
-
-
-    {
-
-      nome: "Amoxicilina",
-
-      principio: "Informação a cadastrar",
-
-      classe: "Antimicrobiano",
-
-      mecanismo: "Informação a cadastrar",
-
-      especies: "Informação a cadastrar",
-
-      indicacoes: "Informação a cadastrar",
-
-      dose: "Informação a cadastrar",
-
-      apresentacoes: "Informação a cadastrar",
-
-      contraindicacoes: "Informação a cadastrar",
-
-      efeitos: "Informação a cadastrar",
-
-      interacoes: "Informação a cadastrar",
-
-      toxicidade: "Informação a cadastrar",
-
-      antidoto: "Informação a cadastrar",
-
-      referencias: "Informação a cadastrar"
-
-    },
-
-
-    {
-
-      nome: "Meloxicam",
-
-      principio: "Informação a cadastrar",
-
-      classe: "Anti-inflamatório",
-
-      mecanismo: "Informação a cadastrar",
-
-      especies: "Informação a cadastrar",
-
-      indicacoes: "Informação a cadastrar",
-
-      dose: "Informação a cadastrar",
-
-      apresentacoes: "Informação a cadastrar",
-
-      contraindicacoes: "Informação a cadastrar",
-
-      efeitos: "Informação a cadastrar",
-
-      interacoes: "Informação a cadastrar",
-
-      toxicidade: "Informação a cadastrar",
-
-      antidoto: "Informação a cadastrar",
-
-      referencias: "Informação a cadastrar"
-
-    }
-
-
-  ];
-
-
-
+<script src="medicamentos.js"></script>
   function buscarMedicamento() {
 
+  const texto = document
+    .getElementById("pesquisa")
+    .value
+    .toLowerCase()
+    .trim();
 
-    const texto = document
-      .getElementById("pesquisa")
-      .value
-      .toLowerCase()
-      .trim();
+  const resultados =
+    document.getElementById("resultados");
 
+  const ficha =
+    document.getElementById("ficha");
 
-    const resultados =
-      document.getElementById("resultados");
+  ficha.style.display = "none";
 
-
-    const ficha =
-      document.getElementById("ficha");
-
-
-    ficha.style.display = "none";
-
-
-    if (texto === "") {
-
-      resultados.innerHTML = "";
-
-      return;
-
-    }
-
-
-    const encontrados =
-      medicamentos.filter(medicamento =>
-
-        medicamento.nome
-          .toLowerCase()
-          .includes(texto)
-
-        ||
-
-        medicamento.classe
-          .toLowerCase()
-          .includes(texto)
-
-        ||
-
-        medicamento.principio
-          .toLowerCase()
-          .includes(texto)
-
-      );
-
-
-    if (encontrados.length === 0) {
-
-      resultados.innerHTML = `
-
-        <div class="vazio">
-
-          😕 Nenhum medicamento encontrado.
-
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    resultados.innerHTML =
-      encontrados.map((medicamento, index) => `
-
-        <div
-          class="med-card"
-          onclick="abrirFicha(${medicamentos.indexOf(medicamento)})"
-        >
-
-          <h3>
-            💊 ${medicamento.nome}
-          </h3>
-
-          <p>
-            <strong>Classe:</strong>
-            ${medicamento.classe}
-          </p>
-
-          <p>
-            <strong>Princípio ativo:</strong>
-            ${medicamento.principio}
-          </p>
-
-        </div>
-
-      `).join("");
-
-
+  if (texto === "") {
+    resultados.innerHTML = "";
+    return;
   }
 
+  const encontrados = medicamentos.filter(medicamento =>
+    medicamento.nome.toLowerCase().includes(texto) ||
+    medicamento.principio.toLowerCase().includes(texto) ||
+    medicamento.classe.toLowerCase().includes(texto) ||
+    medicamento.especies.some(especie =>
+      especie.toLowerCase().includes(texto)
+    )
+  );
 
+  if (encontrados.length === 0) {
 
-  function abrirFicha(index) {
-
-
-    const medicamento =
-      medicamentos[index];
-
-
-    const ficha =
-      document.getElementById("ficha");
-
-
-    const resultados =
-      document.getElementById("resultados");
-
-
-    resultados.innerHTML = "";
-
-
-    ficha.style.display = "block";
-
-
-    ficha.innerHTML = `
-
-
-      <div class="ficha-topo">
-
-        <h2>
-          💊 ${medicamento.nome}
-        </h2>
-
-        <p>
-          ${medicamento.classe}
-        </p>
-
+    resultados.innerHTML = `
+      <div class="vazio">
+        😕 Nenhum medicamento encontrado.
       </div>
-
-
-      <div class="info">
-
-        <h3>🧪 Princípio ativo</h3>
-
-        <p>
-          ${medicamento.principio}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>⚙️ Mecanismo de ação</h3>
-
-        <p>
-          ${medicamento.mecanismo}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>🐶🐱 Espécies</h3>
-
-        <p>
-          ${medicamento.especies}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>🎯 Indicações</h3>
-
-        <p>
-          ${medicamento.indicacoes}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>⚖️ Dose e administração</h3>
-
-        <p>
-          ${medicamento.dose}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>📦 Apresentações e concentrações</h3>
-
-        <p>
-          ${medicamento.apresentacoes}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>⚠️ Contraindicações</h3>
-
-        <p>
-          ${medicamento.contraindicacoes}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>❗ Efeitos adversos</h3>
-
-        <p>
-          ${medicamento.efeitos}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>🔄 Interações medicamentosas</h3>
-
-        <p>
-          ${medicamento.interacoes}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>🚨 Toxicidade / intoxicação</h3>
-
-        <p>
-          ${medicamento.toxicidade}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>🩺 Antídoto / conduta</h3>
-
-        <p>
-          ${medicamento.antidoto}
-        </p>
-
-      </div>
-
-
-      <div class="info">
-
-        <h3>📚 Referências</h3>
-
-        <p>
-          ${medicamento.referencias}
-        </p>
-
-      </div>
-
-
-      <button
-        class="voltar"
-        onclick="voltarParaBusca()"
-      >
-
-        ← Voltar para a pesquisa
-
-      </button>
-
-
     `;
 
-
-    ficha.scrollIntoView({
-      behavior: "smooth"
-    });
-
-
+    return;
   }
 
+  resultados.innerHTML = encontrados.map(medicamento => `
+
+    <div
+      class="med-card"
+      onclick="abrirFicha('${medicamento.nome}')"
+    >
+
+      <h3>💊 ${medicamento.nome}</h3>
+
+      <p>
+        <strong>Classe:</strong>
+        ${medicamento.classe}
+      </p>
+
+      <p>
+        <strong>Princípio ativo:</strong>
+        ${medicamento.principio}
+      </p>
+
+    </div>
+
+  `).join("");
+
+}
 
 
-  function voltarParaBusca() {
+function abrirFicha(nome) {
+
+  const medicamento = medicamentos.find(
+    item => item.nome === nome
+  );
+
+  if (!medicamento) return;
+
+  const ficha =
+    document.getElementById("ficha");
+
+  const resultados =
+    document.getElementById("resultados");
+
+  resultados.innerHTML = "";
+
+  ficha.style.display = "block";
+
+  ficha.innerHTML = `
+
+    <div class="ficha-topo">
+
+      <h2>
+        💊 ${medicamento.nome}
+      </h2>
+
+      <p>
+        ${medicamento.classe}
+      </p>
+
+    </div>
 
 
-    const ficha =
-      document.getElementById("ficha");
+    <div class="info">
+
+      <h3>🧪 Princípio ativo</h3>
+
+      <p>
+        ${medicamento.principio}
+      </p>
+
+    </div>
 
 
-    ficha.style.display = "none";
+    <div class="info">
+
+      <h3>⚙️ Mecanismo de ação</h3>
+
+      <p>
+        ${medicamento.mecanismo}
+      </p>
+
+    </div>
 
 
-    document
-      .getElementById("pesquisa")
-      .focus();
+    <div class="info">
+
+      <h3>🐾 Espécies</h3>
+
+      <p>
+        ${medicamento.especies.join(" • ")}
+      </p>
+
+    </div>
 
 
-  }
+    <div class="info">
 
+      <h3>🎯 Indicações</h3>
+
+      <p>
+        ${medicamento.indicacoes}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>⚖️ Dose</h3>
+
+      <p>
+        ${medicamento.dose}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>💉 Via de administração</h3>
+
+      <p>
+        ${medicamento.via}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>📦 Concentração</h3>
+
+      <p>
+        ${medicamento.concentracao}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>⚠️ Contraindicações</h3>
+
+      <p>
+        ${medicamento.contraindicacoes}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>❗ Efeitos adversos</h3>
+
+      <p>
+        ${medicamento.efeitos}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>🔄 Interações medicamentosas</h3>
+
+      <p>
+        ${medicamento.interacoes}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>🚨 Toxicidade / intoxicação</h3>
+
+      <p>
+        ${medicamento.toxicidade}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>🩺 Antídoto / conduta</h3>
+
+      <p>
+        ${medicamento.antidoto}
+      </p>
+
+    </div>
+
+
+    <div class="info">
+
+      <h3>📚 Referências</h3>
+
+      <p>
+
+        ${
+          medicamento.referencias.length
+          ? medicamento.referencias.join("<br>")
+          : "A cadastrar"
+        }
+
+      </p>
+
+    </div>
+
+
+    <button
+      class="voltar"
+      onclick="voltarParaBusca()"
+    >
+
+      ← Voltar para a pesquisa
+
+    </button>
+
+  `;
+
+
+  ficha.scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+
+function voltarParaBusca() {
+
+  document
+    .getElementById("ficha")
+    .style.display = "none";
+
+  document
+    .getElementById("pesquisa")
+    .focus();
+
+}
 
 </script>
 
-
 </body>
 </html>
+
